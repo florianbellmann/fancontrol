@@ -4,6 +4,7 @@
 import RPi.GPIO as GPIO
 import time
 import datetime
+import os
 import sys
 
 # Configuration
@@ -65,7 +66,17 @@ try:
                         and (fanSpeed >= FAN_MIN or fanSpeed == 0)):
                     fan.ChangeDutyCycle(fanSpeed)
                     fanSpeedOld = fanSpeed
-                    print(str(datetime.datetime.now()) +" | Changing FanSpeed: CpuTemp: "+ str(cpuTemp) +", FanSpeed: "+str(fanSpeed))
+
+                    filename = os.path.join(os.path.abspath(os.getcwd()), "log.txt")
+                    print(filename)
+                    if os.path.exists(filename):
+                        append_write = 'a' # append if already exists
+                    else:
+                        append_write = 'w' # make a new file if not
+
+                    f = open(filename, append_write)
+                    f.write(str(datetime.datetime.now()) +" | Changing FanSpeed: CpuTemp: "+ str(cpuTemp) +", FanSpeed: "+str(fanSpeed)+"\n\r")
+                    f.close()
             cpuTempOld = cpuTemp
 
         # Wait until next refresh

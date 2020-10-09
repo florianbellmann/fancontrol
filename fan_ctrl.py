@@ -14,8 +14,8 @@ FAN_MIN = 25  # [%] Fan minimum speed.
 PWM_FREQ = 25  # [Hz] Change this value if fan has strange behavior
 
 # Configurable temperature and fan speed steps
-tempSteps = [0, 40, 45, 50, 70]  # [°C]
-speedSteps = [0, 25, 50, 75, 100]  # [%]
+tempSteps = [0, 40, 42, 45, 50]  # [°C]
+speedSteps = [0, 50, 63, 75, 100]  # [%]
 
 # Fan speed will change only of the difference of temperature is higher than hysteresis
 hyst = 1
@@ -67,7 +67,8 @@ try:
                     fan.ChangeDutyCycle(fanSpeed)
                     fanSpeedOld = fanSpeed
 
-                    filename = os.path.join(os.path.abspath(os.getcwd()), "log.txt")
+                    filename = os.path.join("/","home","pi","Private","fancontrol", "log.txt")
+                    # filename = os.path.join(os.path.abspath(os.getcwd()), "log.txt")
                     print(filename)
                     if os.path.exists(filename):
                         append_write = 'a' # append if already exists

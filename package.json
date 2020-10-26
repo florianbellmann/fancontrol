@@ -1,0 +1,24 @@
+{
+  "name": "fancontrol",
+  "version": "1.0.0",
+  "description": "small service or docker container to control fanspeed and cputemp of raspberrypi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florianjuesten/fancontrol.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florianjuesten/fancontrol/issues"
+  },
+  "homepage": "https://github.com/florianjuesten/fancontrol#readme",
+  "dependencies": {
+    "fastify": "^3.7.0",
+    "read-last-line": "^1.1.0"
+  }
+}

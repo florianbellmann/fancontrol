@@ -1,7 +1,8 @@
-FROM python:3
+FROM node:14
 
-ADD fan_ctrl.py /
+COPY index.js indes.js
+COPY package.json package.json
 
-RUN pip install RPi.GPIO
+RUN npm install 
 
-CMD ["python", "./fan_ctrl.py"]
+CMD [ "node", "index.js" ]

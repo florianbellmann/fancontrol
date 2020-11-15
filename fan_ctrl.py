@@ -67,7 +67,7 @@ try:
                     fan.ChangeDutyCycle(fanSpeed)
                     fanSpeedOld = fanSpeed
 
-                    filename = os.path.join("/","home","pi","Private","fancontrol", "log.txt")
+                    filename = os.path.join("/","home","pi","Private","logs","fancontrol", "log.txt")
                     # filename = os.path.join(os.path.abspath(os.getcwd()), "log.txt")
                     print(filename)
                     if os.path.exists(filename):

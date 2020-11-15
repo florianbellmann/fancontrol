@@ -19,6 +19,7 @@
   "homepage": "https://github.com/florianjuesten/fancontrol#readme",
   "dependencies": {
     "fastify": "^3.7.0",
+    "fastify-static": "^3.3.0",
     "read-last-line": "^1.1.0"
   }
 }

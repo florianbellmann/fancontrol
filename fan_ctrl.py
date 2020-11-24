@@ -37,6 +37,7 @@ if len(speedSteps) != len(tempSteps):
     print("Numbers of temp steps and speed steps are different")
     exit(0)
 
+filename = os.path.join("/","home","pi","Private","logs","fancontrol", "log.txt")
 second_threshold = 5
 countseconds = 0
 try:
@@ -50,6 +51,11 @@ try:
         if abs(cpuTemp - cpuTempOld) > hyst:
             if countseconds < second_threshold:
                 countseconds += 1
+
+                if os.path.exists(filename):
+                    append_write = 'a' # append if already exists
+                else:
+                    append_write = 'w' # make a new file if not
 
                 f = open(filename, append_write)
                 f.write(str(datetime.datetime.now()) +" | Waiting for seconds to pass: "+ countseconds +" \n\r")
@@ -80,7 +86,6 @@ try:
                     fan.ChangeDutyCycle(fanSpeed)
                     fanSpeedOld = fanSpeed
 
-                    filename = os.path.join("/","home","pi","Private","logs","fancontrol", "log.txt")
                     # filename = os.path.join(os.path.abspath(os.getcwd()), "log.txt")
                     print(filename)
                     if os.path.exists(filename):

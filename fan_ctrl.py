@@ -38,7 +38,7 @@ if len(speedSteps) != len(tempSteps):
     exit(0)
 
 filename = os.path.join("/","home","pi","Private","logs","fancontrol", "log.txt")
-second_threshold = 5
+second_threshold = 3
 countseconds = 0
 try:
     while 1:
@@ -58,20 +58,12 @@ try:
                     append_write = 'w' # make a new file if not
 
                 f = open(filename, append_write)
-                f.write(str(datetime.datetime.now()) +" | Waiting for seconds to pass: "+ str(countseconds) +" \n\r")
+                f.write(str(datetime.datetime.now()) +" | Waiting for iterations to pass: "+ str(countseconds) +" \n\r")
                 f.close()
                 
                 time.sleep(WAIT_TIME)
                 continue
             else:
-                if os.path.exists(filename):
-                    append_write = 'a' # append if already exists
-                else:
-                    append_write = 'w' # make a new file if not
-
-                f = open(filename, append_write)
-                f.write(str(datetime.datetime.now()) +" | Resetting count seconds. and moving on. \n\r")
-                f.close()
                 countseconds = 0
              
             # Below first value, fan will run at min speed.
@@ -107,14 +99,6 @@ try:
                     f.close()
             cpuTempOld = cpuTemp
         else:
-             if os.path.exists(filename):
-                append_write = 'a' # append if already exists
-            else:
-                append_write = 'w' # make a new file if not
-
-            f = open(filename, append_write)
-            f.write(str(datetime.datetime.now()) +" | Resetting count seconds. \n\r")
-            f.close()
             countseconds = 0
         # Wait until next refresh
         time.sleep(WAIT_TIME)

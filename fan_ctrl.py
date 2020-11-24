@@ -58,7 +58,7 @@ try:
                     append_write = 'w' # make a new file if not
 
                 f = open(filename, append_write)
-                f.write(str(datetime.datetime.now()) +" | Waiting for seconds to pass: "+ countseconds +" \n\r")
+                f.write(str(datetime.datetime.now()) +" | Waiting for seconds to pass: "+ str(countseconds) +" \n\r")
                 f.close()
                 
                 continue

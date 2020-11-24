@@ -37,6 +37,8 @@ if len(speedSteps) != len(tempSteps):
     print("Numbers of temp steps and speed steps are different")
     exit(0)
 
+second_threshold = 5
+countseconds = 0
 try:
     while 1:
         # Read CPU temperature
@@ -46,6 +48,17 @@ try:
 
         # Calculate desired fan speed
         if abs(cpuTemp - cpuTempOld) > hyst:
+            if countseconds < second_threshold:
+                countseconds += 1
+
+                f = open(filename, append_write)
+                f.write(str(datetime.datetime.now()) +" | Waiting for seconds to pass: "+ countseconds +" \n\r")
+                f.close()
+                
+                continue
+            else:
+                countseconds = 0
+             
             # Below first value, fan will run at min speed.
             if cpuTemp < tempSteps[0]:
                 fanSpeed = speedSteps[0]

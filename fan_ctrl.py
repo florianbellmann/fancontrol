@@ -52,14 +52,14 @@ try:
             if countseconds < second_threshold:
                 countseconds += 1
 
-                if os.path.exists(filename):
-                    append_write = 'a' # append if already exists
-                else:
-                    append_write = 'w' # make a new file if not
+                # if os.path.exists(filename):
+                    # append_write = 'a' # append if already exists
+                # else:
+                    # append_write = 'w' # make a new file if not
 
-                f = open(filename, append_write)
-                f.write(str(datetime.datetime.now()) +" | Waiting for iterations to pass: "+ str(countseconds) +" \n\r")
-                f.close()
+                # f = open(filename, append_write)
+                # f.write(str(datetime.datetime.now()) +" | Waiting for iterations to pass: "+ str(countseconds) +" \n\r")
+                # f.close()
                 
                 time.sleep(WAIT_TIME)
                 continue
